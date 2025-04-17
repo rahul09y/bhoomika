@@ -1,0 +1,42 @@
+// App.jsx
+import React from "react";
+import { motion } from "framer-motion";
+
+const images = [
+  "/111.jpg",
+  "/222.jpg",
+  "/333.jpg",
+  "/444.jpg",
+  "/55.jpg",
+  "/66.jpg",
+];
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-black text-white px-4 py-10">
+      <audio autoPlay loop hidden>
+        <source src="/perfect.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
+      <header className="text-center mb-12">
+        <h1 className="text-4xl md:text-6xl font-bold mb-2">I'm Sorry</h1>
+        <p className="text-gray-400">I hope these say what I can't in words</p>
+      </header>
+
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {images.map((src, i) => (
+          <motion.div
+            key={i}
+            className="rounded-2xl overflow-hidden shadow-lg"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.2 }}
+          >
+            <img src={src} alt={`image-${i}`} className="w-full h-auto object-cover" />
+          </motion.div>
+        ))}
+      </section>
+    </div>
+  );
+}
